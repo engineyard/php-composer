@@ -6,6 +6,7 @@ Build-Depends: debhelper (>= 7), po-debconf, php5-dev
 Standards-Version: 3.9.4
 
 Package: php5-composer
+Depends: php5-cli
 Architecture: any
 Description: Dependency Manager for PHP
  Composer is a dependency manager tracking local dependencies of your
