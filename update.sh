@@ -9,14 +9,15 @@ else
 	printf "Run from repo.\n"
 fi
 
-loc=$(mktemp -t composer)
-curl -s -L https://getcomposer.org/composer.phar \
-	-o $loc
 
-hash_current=$(md5 -r "$current" | cut -d' ' -f1)
-hash_new=$(md5 -r "$loc" | cut -d' ' -f1)
+hash_current=$(php $current --version | cut -d' ' -f3 | cut -b 6-12)
+hash_new=$(curl -s -L https://getcomposer.org/version | cut -b 1-7)
 
 if [ $hash_current != $hash_new ]; then
+
+	loc=$(mktemp -t composer)
+	curl -s -L https://getcomposer.org/composer.phar \
+		-o $loc
 	
 	changelog="debian/changelog"
 	tempfile=$(mktemp -t debcontrol)
@@ -26,7 +27,7 @@ if [ $hash_current != $hash_new ]; then
 	version="1.0.0-dev-$current_date"
 
 
-	composer_ver=$(php $loc --version | cut -d' ' -f3 | cut -b 6-12)
+	composer_ver=$hash_new
 	printf "Updating..."
 	mv $loc $current
 	echo "php-composer ($version-0+precise1) precise; urgency=low
@@ -41,8 +42,6 @@ if [ $hash_current != $hash_new ]; then
 	git tag -a $version -m $version
 	printf "Ready to push.\n"
 else
-	# Cleanup
-	rm $loc
 	printf "No changes since last update.\n"
 fi
 
