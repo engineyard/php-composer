@@ -15,7 +15,7 @@ errexit() {
 }
 
 # Check available commands
-for cmd in php curl git pushd popd
+for cmd in php curl git
 do
 	command -v $cmd > /dev/null || errexit $cmd
 done
