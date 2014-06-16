@@ -1,6 +1,6 @@
-php-composer (1.0.0-dev-20140609-0+precise1) precise; urgency=low
+php-composer (1.0.0-dev-20140616-0+precise1) precise; urgency=low
 
-  * Upstream release 1.0.0-dev-20140609 (d97e006).
+  * Upstream release 1.0.0-dev-20140616 (ac497fe).
 
- -- Ross Duggan <ross.duggan@acm.org>  Mon, 09 Jun 2014 14:47:19 +0100
+ -- Ross Duggan <ross.duggan@acm.org>  Mon, 16 Jun 2014 14:28:20 +0100
 
