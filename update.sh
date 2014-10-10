@@ -39,11 +39,9 @@ if [ $hash_current != $hash_new ]; then
 	composer_ver=$hash_new
 
 	printf "Testing..."
-	echo '{
-    "require": {
-        "monolog/monolog": "1.0.*"
-    }
-}' > $loc/composer.json
+	cp test/composer.json $loc/
+	cp test/composer.lock $loc/
+
 	cwd=`pwd`
 	cd $loc
 	php composer.phar install > $loc/build.log || exit 1
