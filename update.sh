@@ -20,7 +20,7 @@ do
 	command -v $cmd > /dev/null || errexit $cmd
 done
 
-hash_current=$(php $current --version | cut -d' ' -f3 | cut -b 6-12)
+hash_current=$(php $current --no-ansi --version | grep '^Composer version' | cut -d' ' -f3 | cut -b 6-12)
 hash_new=$(curl -s -L https://getcomposer.org/version | cut -b 1-7)
 
 if [ $hash_current != $hash_new ]; then
