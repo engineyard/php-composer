@@ -33,3 +33,5 @@ To update:
 apt-get update
 apt-get install --only-upgrade php5-composer
 ```
+
+Updating this just requires running “update.sh” from the root of the repository (and pushing the result to master, along with the the tags). After that, the imports and source package recipes on Launchpad take care of the builds.
